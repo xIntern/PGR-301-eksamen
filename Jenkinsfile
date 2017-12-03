@@ -6,15 +6,20 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Install packages') {
             steps {
-                sh 'cd ./app'
+                sh 'cd app'
             	sh 'npm i'
             }
         }
         stage('Test') {
             steps {
                 sh 'npm test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm build'
             }
         }
         stage('Deploy') {
