@@ -2,10 +2,6 @@ FROM node:8-alpine
 
 WORKDIR /usr/src/app
 
-COPY . .
-
-RUN npm i
+COPY build .
 
 EXPOSE 80
-
-CMD ["npm", "start"]
