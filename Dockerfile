@@ -1,14 +1,13 @@
 FROM node:8-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
-COPY package.json .
-COPY yarn.lock .
+COPY app ./
+
+WORKDIR ./app
 
 RUN yarn
 
-COPY index.js index.js
-
 EXPOSE 80
 
-CMD ["node", "index.js"]
+CMD ["yarn", "start"]
