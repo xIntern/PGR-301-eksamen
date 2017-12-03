@@ -6,8 +6,8 @@ COPY app ./
 
 WORKDIR ./app
 
-RUN yarn
+RUN npm i
 
 EXPOSE 80
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
