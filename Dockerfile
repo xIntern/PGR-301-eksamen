@@ -1,10 +1,8 @@
 FROM node:8-alpine
 
-WORKDIR /usr/src
+WORKDIR /usr/src/app
 
-COPY app ./
-
-WORKDIR ./app
+COPY . .
 
 RUN npm i
 

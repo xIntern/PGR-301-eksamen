@@ -107,7 +107,7 @@ class MovieWatchlist extends Component {
                                 const searchStr = this.state.search.toLowerCase();
                                 const title = movie.title.toLowerCase();
                                 const year = movie.year;
-                                return title.search(searchStr) > -1 || year == searchStr;
+                                return title.search(searchStr) > -1 || year === searchStr;
                             })}
                       />
                     )}
