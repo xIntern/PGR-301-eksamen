@@ -9,6 +9,7 @@ pipeline {
         stage('Install packages') {
             steps {
                 sh 'cd app'
+                sh 'ls'
             	sh 'npm i'
             }
         }
