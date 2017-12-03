@@ -8,10 +8,7 @@ pipeline {
     stages {
         stage('Install packages') {
             steps {
-                dir('app') {
-                    sh 'ls'
-                    sh 'npm i'
-                }
+            	sh 'npm i'
             }
         }
         stage('Test') {
