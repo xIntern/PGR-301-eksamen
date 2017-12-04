@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Make docker available') {
             steps {
-                sh 'chmod 777 /var/run/docker.sock'
+                sh 'sudo chmod 777 /var/run/docker.sock'
             }
         }
         stage('install ansible') {
