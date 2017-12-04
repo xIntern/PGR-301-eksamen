@@ -23,15 +23,17 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                script {
-                    docker.build("waaand14/pg301")
-                }
+                echo 'Building...'
+                // script {
+                //     docker.build("waaand14/pg301")
+                // }
             }
         }
         stage('Push image') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        def app = docker.build("waaand14/pg301")
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
