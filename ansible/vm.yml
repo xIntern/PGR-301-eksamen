@@ -3,7 +3,7 @@
   gather_facts: False
 
   vars:
-    service_account_email: 45118341352-compute@developer.gserviceaccount.com
+    service_account_email: ansible@eksamen-pgr301.iam.gserviceaccount.com
     credentials_file: ~/gc_credentials.json
     project_id: eksamen-pgr301
     machine_type: n1-standard-1
@@ -22,11 +22,12 @@
         credentials_file: "{{ credentials_file }}"
         project_id: "{{ project_id }}"
         state: present
+      register: gce
 
   post_tasks:
-    - name: Wait for SSH for instances in first zone
+    - name: Wait for SSH
       wait_for: delay=1 host={{ item.public_ip }} port=22 state=started timeout=30
       with_items: "{{ gcea.instance_data }}"
-    - name: Save host data for first zone
+    - name: Save host data
       add_host: hostname={{ item.public_ip }} groupname=gce_instances_ips
       with_items: "{{ gcea.instance_data }}"
