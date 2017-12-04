@@ -15,7 +15,7 @@
     - name: Launch instances
       gce:
         instance_names: instance-pgr301
-        zone: "{{ zone }}"
+        # zone: "{{ zone }}"
         machine_type: "{{ machine_type }}"
         image: "{{ image }}"
         service_account_email: "{{ service_account_email }}"
