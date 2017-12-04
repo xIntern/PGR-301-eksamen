@@ -5,7 +5,7 @@
 
   vars:
     service_account_email: ansible-1@eksamen-pgr301.iam.gserviceaccount.com
-    credentials_file: ../safe/gc_credentials.json
+    credentials_file: ~/gc_credentials.json
     project_id: eksamen-pgr301
     machine_type: n1-standard-1
     image: debian-7
