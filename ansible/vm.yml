@@ -8,13 +8,15 @@
     credentials_file: ~/gc_credentials.json
     project_id: eksamen-pgr301
     machine_type: n1-standard-1
-    image: debian-7
+    zone: europe-west1-b
+    image: debian-9
 
   tasks:
 
     - name: Launch instances
       gce:
         instance_names: PGR301
+        zone: "{{ zone }}"
         machine_type: "{{ machine_type }}"
         image: "{{ image }}"
         service_account_email: "{{ service_account_email }}"
