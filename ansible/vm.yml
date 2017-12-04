@@ -1,6 +1,5 @@
 - name: Create instance(s)
   hosts: localhost
-  connection: local
   gather_facts: False
 
   vars:
@@ -22,6 +21,7 @@
         service_account_email: "{{ service_account_email }}"
         credentials_file: "{{ credentials_file }}"
         project_id: "{{ project_id }}"
+        state: present
 
   post_tasks:
     - name: Wait for SSH for instances in first zone
