@@ -6,18 +6,18 @@ pipeline {
     }
 
     stages {
-        stage('Make docker available') {
-            steps {
-                sh 'sudo chmod 777 /var/run/docker.sock'
-            }
-        }
+        // stage('Make docker available') {
+        //     steps {
+        //         sh 'sudo chmod 777 /var/run/docker.sock'
+        //     }
+        // }
         stage('install ansible') {
             steps {
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install software-properties-common'
-                sh 'sudo apt-add-repository ppa:ansible/ansible'
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install ansible'
+                sh 'apt-get update'
+                sh 'apt-get install software-properties-common'
+                sh 'apt-add-repository ppa:ansible/ansible'
+                sh 'apt-get update'
+                sh 'apt-get install ansible'
             }
         }
         stage('Install npm packages') {
