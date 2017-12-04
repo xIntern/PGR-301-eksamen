@@ -25,7 +25,8 @@ pipeline {
             steps {
                 // echo 'Building...'
                 script {
-                    app = docker.build("eksamen")
+                    // app = docker.build("eksamen")
+                    def app = docker.build "waaand14/pgr301:${env.BUILD_TAG}"
                 }
                 // sh 'docker build -t eksamen .'
             }
