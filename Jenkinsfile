@@ -21,21 +21,11 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        // stage('Build docker image') {
-        //     steps {
-        //         // echo 'Building...'
-        //         script {
-        //             // app = docker.build("eksamen")
-        //             // def app = docker.build "waaand14/pgr301:${env.BUILD_TAG}"
-        //         }
-        //         // sh 'docker build -t eksamen .'
-        //     }
-        // }
         stage('Build and push docker image') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        def app = docker.build "waaand14/pgr301:${env.BUILD_TAG}"
+                        def app = docker.build "waaand14/pgr301"
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
