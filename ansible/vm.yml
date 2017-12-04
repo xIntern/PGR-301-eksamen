@@ -3,7 +3,7 @@
   gather_facts: False
 
   vars:
-    service_account_email: ansible@eksamen-pgr301.iam.gserviceaccount.com
+    service_account_email: ansible2@eksamen-pgr301.iam.gserviceaccount.com
     credentials_file: ~/gc_credentials.json
     project_id: eksamen-pgr301
     machine_type: n1-standard-1
