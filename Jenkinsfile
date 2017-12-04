@@ -34,12 +34,14 @@ pipeline {
         }
         stage('Create GC Compute Engine') {
             steps {
-                sh 'ansible-playbook ansible/vm.yml'
+                // sh 'ansible-playbook ansible/vm.yml'
+                sh 'ls'
             }
         }
         stage('Set up Compute Engine env') {
             steps {
-                sh 'ansible-playbook ansible/env.yml'
+                // sh 'ansible-playbook ansible/env.yml'
+                echo 'Set up Compute Engine env'
             }
         }
     }
