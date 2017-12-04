@@ -1,6 +1,6 @@
-FROM node:8-alpine
+FROM node:9.2.0-alpine
 
-WORKDIR /usr/src/app
+WORKDIR ~/app
 
 COPY build .
 

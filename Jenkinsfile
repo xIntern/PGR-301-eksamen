@@ -23,14 +23,18 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                app = docker.build("waaand14/pg301")
+                script {
+                    docker.build("waaand14/pg301")
+                }
             }
         }
         stage('Push image') {
             steps {
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                    app.push("${env.BUILD_NUMBER}")
-                    app.push("latest")
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                    }
                 }
             }
         }
