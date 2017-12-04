@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS8"
+        nodejs "NodeJS"
     }
 
     stages {
@@ -24,10 +24,10 @@ pipeline {
         stage('Build docker image') {
             steps {
                 // echo 'Building...'
-                // script {
-                //     docker.build("waaand14/pg301")
-                // }
-                sh 'docker build -t eksamen .'
+                script {
+                    app = docker.build("eksamen")
+                }
+                // sh 'docker build -t eksamen .'
             }
         }
         stage('Push image') {
