@@ -1,0 +1,30 @@
+- name: Create instance(s)
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  vars:
+    service_account_email: ansible-1@eksamen-pgr301.iam.gserviceaccount.com
+    credentials_file: ../safe/gc_credentials.json
+    project_id: eksamen-pgr301
+    machine_type: n1-standard-1
+    image: debian-7
+
+  tasks:
+
+    - name: Launch instances
+      gce:
+        instance_names: PGR301
+        machine_type: "{{ machine_type }}"
+        image: "{{ image }}"
+        service_account_email: "{{ service_account_email }}"
+        credentials_file: "{{ credentials_file }}"
+        project_id: "{{ project_id }}"
+
+  post_tasks:
+    - name: Wait for SSH for instances in first zone
+      wait_for: delay=1 host={{ item.public_ip }} port=22 state=started timeout=30
+      with_items: "{{ gcea.instance_data }}"
+    - name: Save host data for first zone
+      add_host: hostname={{ item.public_ip }} groupname=gce_instances_ips
+      with_items: "{{ gcea.instance_data }}"
